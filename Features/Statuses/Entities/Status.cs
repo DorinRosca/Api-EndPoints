@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using ApiEndPoints.Features.Orders.Entities;
 
 namespace ApiEndPoints.Features.Statuses.Entities
 {
@@ -13,8 +12,5 @@ namespace ApiEndPoints.Features.Statuses.Entities
 
         [Required, StringLength(50), Column(TypeName = "nvarchar(50)")]
         public string StatusName { get; set; }
-
-        public virtual ICollection<Order> Order { get; set; }
-
     }
 }

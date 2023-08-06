@@ -10,22 +10,18 @@ namespace ApiEndPoints.Features.Brands.EndPoints
      public class EditBrand : EndpointBaseAsync.WithRequest<BrandDto>.WithResult<IActionResult>
      {
           private readonly IMediator _mediator;
-          private readonly IAppCache _appCache;
 
-          public EditBrand(IAppCache appCache, IMediator mediator)
+          public EditBrand(IMediator mediator)
           {
-               _appCache = appCache;
                _mediator = mediator;
           }
-          [HttpPut("edit/{id}")]
+          [HttpPut("editBrand/{id}")]
 
           public override async Task<IActionResult> HandleAsync(BrandDto request, CancellationToken cancellationToken = new CancellationToken())
           {
-               var result = await _mediator.Send(new EditBrandCommand(request),cancellationToken);
+               var result = await _mediator.Send(new EditBrandCommand(request), cancellationToken);
                if (result)
                {
-                    _appCache.Remove("AllBrands.Get");
-                    _appCache.Remove("BrandById.Get: "+ request.BrandId);
                     return Ok(result);
 
                }

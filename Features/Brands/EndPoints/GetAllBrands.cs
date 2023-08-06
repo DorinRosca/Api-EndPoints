@@ -21,7 +21,7 @@ namespace ApiEndPoints.Features.Brands.EndPoints
           [HttpGet("getAllBrands")]
           public override async Task<IActionResult> HandleAsync(CancellationToken cancellationToken = new CancellationToken())
           {
-               var brands = await _appCache.GetOrAddAsync("AllBrands.Get", () => _mediator.Send(new GetAllBrandQuery(),cancellationToken));
+               var brands = await _appCache.GetOrAddAsync("AllBrands.Get", () => _mediator.Send(new GetAllBrandQuery(),cancellationToken),DateTime.Now.AddHours(4));
                if (brands.IsNullOrEmpty())
                {
                     return NotFound();

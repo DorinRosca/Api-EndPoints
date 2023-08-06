@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using ApiEndPoints.Features.Cars.Entities;
 
 namespace ApiEndPoints.Features.Vehicles.Entities
 {
@@ -18,7 +17,6 @@ namespace ApiEndPoints.Features.Vehicles.Entities
         [Required, Range(1, byte.MaxValue), Column(TypeName = "tinyint")]
         public byte SeatsNumber { get; set; }
 
-        public virtual ICollection<Car> Cars { get; set; }
 
     }
 }

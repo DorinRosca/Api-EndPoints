@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ApiEndPoints.Data;
-using ApiEndPoints.Features.Cars.Entities;
 using ApiEndPoints.Features.Statuses.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

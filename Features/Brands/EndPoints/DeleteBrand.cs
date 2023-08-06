@@ -10,21 +10,17 @@ namespace ApiEndPoints.Features.Brands.EndPoints
      public class DeleteBrand : EndpointBaseAsync.WithRequest<byte>.WithResult<IActionResult>
      {
           private readonly IMediator _mediator;
-          private readonly IAppCache _appCache;
 
-          public DeleteBrand(IMediator mediator, IAppCache appCache)
+          public DeleteBrand(IMediator mediator)
           {
                _mediator = mediator;
-               _appCache = appCache;
           }
-          [HttpDelete("delete/{id}")]
+          [HttpDelete("deleteBrand/{id}")]
           public override async Task<IActionResult> HandleAsync(byte id, CancellationToken cancellationToken = new CancellationToken())
           {
-               var result = _mediator.Send(new DeleteBrandCommand(id),cancellationToken).Result;
+               var result = await _mediator.Send(new DeleteBrandCommand(id),cancellationToken);
                if (result)
                {
-                    _appCache.Remove("AllBrands.Get");
-                    _appCache.Remove("BrandById.Get: "+ id);
 
                     return Ok(result);
                }

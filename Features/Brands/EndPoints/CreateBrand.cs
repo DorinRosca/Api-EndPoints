@@ -10,15 +10,18 @@ namespace ApiEndPoints.Features.Brands.EndPoints
      public class CreateBrand: EndpointBaseAsync.WithRequest<BrandDto>.WithResult<IActionResult>
      {
           private readonly IMediator _mediator;
+          private readonly IAppCache _appCache;
 
-          public CreateBrand(IMediator mediator)
+          public CreateBrand(IMediator mediator, IAppCache cache)
           {
                _mediator = mediator;
+               _appCache=cache;
           }
-          [HttpPost("add")]
+          [HttpPost("addBrand")]
           public override async Task<IActionResult> HandleAsync(BrandDto request, CancellationToken cancellationToken = new CancellationToken())
           {
-               var result = _mediator.Send(new CreateBrandCommand(request),cancellationToken).Result;
+               var result = await _mediator.Send(new CreateBrandCommand(request),cancellationToken);
+               _appCache.Remove("AllBrands.Get");
                return Ok(result);
           }
      }

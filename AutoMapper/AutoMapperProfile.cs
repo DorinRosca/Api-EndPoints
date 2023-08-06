@@ -3,10 +3,6 @@ using ApiEndPoints.Features.Brands.Command.Create;
 using ApiEndPoints.Features.Brands.Command.Edit;
 using ApiEndPoints.Features.Brands.Entities;
 using ApiEndPoints.Features.Brands.Dto;
-using ApiEndPoints.Features.Cars.Command.Create;
-using ApiEndPoints.Features.Cars.Command.Edit;
-using ApiEndPoints.Features.Cars.Entities;
-using ApiEndPoints.Features.Cars.Dto;
 using ApiEndPoints.Features.Drives.Command.Create;
 using ApiEndPoints.Features.Drives.Command.Edit;
 using ApiEndPoints.Features.Drives.Entities;
@@ -15,9 +11,6 @@ using ApiEndPoints.Features.FuelTypes.Command.Create;
 using ApiEndPoints.Features.FuelTypes.Command.Edit;
 using ApiEndPoints.Features.FuelTypes.Entities;
 using ApiEndPoints.Features.FuelTypes.Dto;
-using ApiEndPoints.Features.Orders.Command.Create;
-using ApiEndPoints.Features.Orders.Entities;
-using ApiEndPoints.Features.Orders.Dto;
 using ApiEndPoints.Features.Statuses.Command.Create;
 using ApiEndPoints.Features.Statuses.Command.Edit;
 using ApiEndPoints.Features.Statuses.Entities;
@@ -53,22 +46,11 @@ namespace ApiEndPoints.AutoMapper
                CreateMap<Vehicle,VehicleDto>();
                CreateMap<VehicleDto,Vehicle>();
 
-               CreateMap<Car, CarCreateDto>();
-               CreateMap<CreateCarCommand,Car>();
-
-               CreateMap<Car, CarDto>();
-               CreateMap<CarDto, Car>();
-
-               CreateMap<Car, CarEditDto>();
-               CreateMap<CarEditDto, Car>();
-
                CreateMap<Status, StatusDto>();
                CreateMap<StatusDto,Status>();
 
 
-               CreateMap<Order, OrderDto>();
-               CreateMap<OrderDto, Order>();
-
+     
                CreateMap<StatusDto, CreateStatusCommand>();
                CreateMap<EditStatusCommand, Status>();
 
@@ -92,11 +74,6 @@ namespace ApiEndPoints.AutoMapper
                CreateMap<CreateDriveCommand, Drive>();
                CreateMap<EditDriveCommand, Drive>();
 
-               CreateMap<EditCarCommand, Car>();
-
-
-               
-               CreateMap<CreateOrderCommand, Order>();
 
           }
      }

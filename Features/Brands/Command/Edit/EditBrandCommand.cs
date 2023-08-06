@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ApiEndPoints.Features.Brands.Command.Edit
 {
-    public record  EditBrandCommand(BrandDto model) : IRequest<bool>
+    public record  EditBrandCommand(BrandDto Model) : IRequest<bool>
     {
-        public int BrandId = model.BrandId;
+        public int BrandId = Model.BrandId;
         [Required, StringLength(50)]
-        public string BrandName = model.BrandName;
+        public string BrandName = Model.BrandName;
 
     }
 }
